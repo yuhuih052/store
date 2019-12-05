@@ -10,4 +10,8 @@ class PagesController extends Controller
     {
         return view('pages.home');
     }
+
+    public function emailVerifiedNotice(){
+        return view('pages.email_verify_page');
+    }
 }
