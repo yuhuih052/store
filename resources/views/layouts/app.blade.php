@@ -9,6 +9,7 @@
     <title>@yield('title', 'Store') - 网上商城</title>
     <!-- 样式 -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div id="app" class="{{ route_class() }}-page">
@@ -20,5 +21,6 @@
 </div>
 <!-- JS 脚本 -->
 <script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>
