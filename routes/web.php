@@ -18,13 +18,13 @@ Route::get('/', 'PagesController@root')->name('root');
 
 Auth::routes();
 
-Route::group(['middleware'=>'auth'],function(){
+Route::middleware('auth')->group(function (){
+    Route::get('/email_verified/send','EmailVerificationController@send')->name('email_verified.send');
     Route::get('/email_verify_page','PagesController@emailVerifiedNotice')->name('email_verify_page');
-    // 开始
+    Route::get('/email_verified/verify','EmailVerificationController@verify')->name('email_verified.verify');
+    /*已经通过邮箱验证*/
     Route::group(['middleware' => 'email_verified'], function() {
-        Route::get('/test', function() {
-            return 'Your email is verified';
-        });
+
     });
-    // 结束
+
 });
