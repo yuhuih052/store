@@ -8,6 +8,7 @@ use App\Models\User;
 use Exception;
 use Mail;
 use App\Notifications\EmailVerifyNotication;
+use App\Exceptions\RequestException;
 
 class EmailVerificationController extends Controller
 {
@@ -20,13 +21,12 @@ class EmailVerificationController extends Controller
         //判断获取到的信息是否存在空值
         if(!$email || !$token){
 
-
-            throw new Exception('链接不正确');
+            throw new RequestException('链接不正确');
         }
 
         //拿到链接跟缓存的token进行对比
         if($token != Cache::get('email_verify_'.$email)){
-            throw new Exception('链接不正确或者已过期');
+            throw new RequestException('链接不正确或者已过期');
         }
 
         //验证已完成删除缓存的验证数据
@@ -42,8 +42,8 @@ class EmailVerificationController extends Controller
         $user = $request->user();
 
         //验证是否激活邮箱
-        if($user->verified){
-            throw new Exception('您已激活邮箱');
+        if($user->email_verified){
+            throw new RequestException('您已激活邮箱');
         }
         //调用 notify() 方法发送邮件
         $user->notify(new EmailVerifyNotication());
