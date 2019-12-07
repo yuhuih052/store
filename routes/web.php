@@ -23,8 +23,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/email_verify_page','PagesController@emailVerifiedNotice')->name('email_verify_page');
     Route::get('/email_verified/verify','EmailVerificationController@verify')->name('email_verified.verify');
     /*已经通过邮箱验证*/
-    Route::group(['middleware' => 'email_verified'], function() {
-
+    Route::middleware(['auth','email_verified'])->group(function(){
+        Route::get('user_addresses','UserAddressController@index')->name('user_addresses.index');
     });
 
 });
