@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function (){
     /*已经通过邮箱验证*/
     Route::middleware(['auth','email_verified'])->group(function(){
         Route::get('user_addresses','UserAddressController@index')->name('user_addresses.index');
+        Route::get('user_addresses/create','UserAddressController@create')->name('user_addresses.create');
+        Route::post('user_addresses/store','UserAddressController@store')->name('user_addresses.store');
     });
 
 });
