@@ -26,7 +26,7 @@ return [
         // 控制器命名空间前缀
         'namespace' => 'App\\Admin\\Controllers',
         // 默认中间件列表
-        'middleware' => ['web', 'admin'],
+        'middleware' => ['web', 'admin', 'admin.session'],
     ],
 
     /*
