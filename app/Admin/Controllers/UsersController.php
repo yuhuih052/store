@@ -29,49 +29,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Show interface.
-     *
-     * @param mixed   $id
-     * @param Content $content
-     * @return Content
-     */
-    public function show($id, Content $content)
-    {
-        return $content
-            ->header('Detail')
-            ->body($this->detail($id));
-    }
-
-    /**
-     * Edit interface.
-     *
-     * @param mixed   $id
-     * @param Content $content
-     * @return Content
-     */
-    public function edit($id, Content $content)
-    {
-        return $content
-            ->header('Edit')
-            ->description('description')
-            ->body($this->form()->edit($id));
-    }
-
-    /**
-     * Create interface.
-     *
-     * @param Content $content
-     * @return Content
-     */
-    public function create(Content $content)
-    {
-        return $content
-            ->header('Create')
-            ->description('description')
-            ->body($this->form());
-    }
-
-    /**
      * Make a grid builder.
      *
      * @return Grid
@@ -91,6 +48,9 @@ class UsersController extends Controller
         // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户
         $grid->disableCreateButton();
 
+        // 关闭编辑 查看 删除按钮
+        $grid->disableActions();
+
         $grid->tools(function ($tools) {
 
             // 禁用批量删除按钮
@@ -101,43 +61,5 @@ class UsersController extends Controller
         return $grid;
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed   $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(User::findOrFail($id));
 
-        $show->id('Id');
-        $show->name('Name');
-        $show->email('Email');
-        $show->password('Password');
-        $show->remember_token('Remember token');
-        $show->email_verified('Email verified');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
-        return $show;
-    }
-
-    /**
-     * Make a form builder.
-     *
-     * @return Form
-     */
-    protected function form()
-    {
-        $form = new Form(new User);
-
-        $form->text('name', 'Name');
-        $form->email('email', 'Email');
-        $form->password('password', 'Password');
-        $form->text('remember_token', 'Remember token');
-        $form->switch('email_verified', 'Email verified');
-
-        return $form;
-    }
 }

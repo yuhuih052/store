@@ -17,10 +17,16 @@
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
-
-Encore\Admin\Form::forget(['map', 'editor']);
-
+use App\Admin\Extensions\WangEditor;
+use Encore\Admin\Form;
 use Encore\Admin\Grid;
+
+
+Form::forget(['map', 'editor']);
+Form::extend('editor', WangEditor::class);
+
+
 Grid::init(function (Grid $grid){
     $grid->column('http_path')->hide();
+    $grid->column('slug')->hide();
 });

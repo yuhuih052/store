@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4168b429dd27a06f62c20369e2492da0",
+    "content-hash": "6acc0edf6534570275712541f600f493",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -569,16 +569,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.6.15",
+            "version": "v1.7.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "a4495a7278f3d5c679edaf92fd17b01a99b35717"
+                "reference": "4c82e84f70556b1cdb6647ff82dee87921e3dddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/a4495a7278f3d5c679edaf92fd17b01a99b35717",
-                "reference": "a4495a7278f3d5c679edaf92fd17b01a99b35717",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/4c82e84f70556b1cdb6647ff82dee87921e3dddd",
+                "reference": "4c82e84f70556b1cdb6647ff82dee87921e3dddd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -589,7 +589,7 @@
             },
             "require": {
                 "doctrine/dbal": "2.*",
-                "laravel/framework": "~5.5",
+                "laravel/framework": "~5.5|~6.0",
                 "php": ">=7.0.0",
                 "symfony/dom-crawler": "~3.1|~4.0"
             },
@@ -597,8 +597,8 @@
                 "fzaninotto/faker": "~1.4",
                 "intervention/image": "~2.3",
                 "laravel/browser-kit-testing": "^2.0",
-                "laravel/laravel": "~5.5",
-                "phpunit/phpunit": "~6.0 || ~8.0",
+                "laravel/laravel": "~5.5|~6.0",
+                "phpunit/phpunit": "~6.0|~8.0",
                 "symfony/css-selector": "~3.1"
             },
             "suggest": {
@@ -642,7 +642,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2019-05-06T10:57:07+00:00"
+            "time": "2019-11-08T07:40:27+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -909,6 +909,65 @@
             ],
             "description": "Update helper",
             "time": "2019-07-29T11:03:54+00:00"
+        },
+        {
+            "name": "laravel-admin-ext/wang-editor",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/wangEditor.git",
+                "reference": "c5f3d5688ef1a84e6966a63e5ec3e39d0afb0f3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/wangEditor/zipball/c5f3d5688ef1a84e6966a63e5ec3e39d0afb0f3b",
+                "reference": "c5f3d5688ef1a84e6966a63e5ec3e39d0afb0f3b",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Encore\\WangEditor\\WangEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Encore\\WangEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "song",
+                    "email": "zosong@126.com"
+                }
+            ],
+            "description": "wangEditor extension for laravel-admin",
+            "homepage": "https://github.com/laravel-admin-extensions/wangEditor",
+            "keywords": [
+                "editor",
+                "extension",
+                "laravel-admin"
+            ],
+            "time": "2019-06-20T08:53:59+00:00"
         },
         {
             "name": "laravel/framework",

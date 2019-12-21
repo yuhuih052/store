@@ -143,12 +143,21 @@ return [
     /*
      * 页面底部展示的版本.
      */
-    'version' => '1.5.x-dev',
+    'version' => '1.7.x-dev',
 
     /*
      * 扩展设置.
      */
     'extensions' => [
+        'wang-editor' => [
 
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+
+            // 编辑器的配置
+            'config' => [
+
+            ]
+        ]
     ],
 ];
