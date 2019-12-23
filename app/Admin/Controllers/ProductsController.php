@@ -37,8 +37,7 @@ class ProductsController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header('查看')
             ->body($this->detail($id));
     }
 
@@ -83,6 +82,15 @@ class ProductsController extends Controller
         $grid->on_sale('已上架')->display(function ($value) {
             return $value ? '是' : '否';
         });
+        $grid->edible('食品')->display(function ($value) {
+            return $value ? '是' : '否';
+        });
+        $grid->daily_use('生活用品')->display(function ($value) {
+            return $value ? '是' : '否';
+        });
+        $grid->wash_rinse('个性美妆')->display(function ($value) {
+            return $value ? '是' : '否';
+        });
         $grid->price('价格');
         $grid->rating('评分');
         $grid->sold_count('销量');
@@ -90,8 +98,36 @@ class ProductsController extends Controller
         $grid->created_at('创建时间');
         $grid->updated_at('最后一次更改时间');
 
+        $grid->quickSearch('title');
+
+        $grid->filter(function($filter){
+
+            // 去掉默认的id过滤器
+            $filter->disableIdFilter();
+
+            // 在这里添加字段过滤器
+            $filter->equal('on_sale','已上架')->radio([
+                0    => '否',
+                1    => '是',
+            ]);
+            $filter->equal('edible','食品酒水')->radio([
+                0    => '否',
+                1    => '是',
+            ]);
+            $filter->equal('daily_use','生活用品')->radio([
+                0    => '否',
+                1    => '是',
+            ]);
+            $filter->equal('wash_rinse','个性美妆')->radio([
+                0    => '否',
+                1    => '是',
+            ]);
+
+        });
+
+
         $grid->actions(function ($actions) {
-            $actions->disableView();
+            //$actions->disableView();
             $actions->disableDelete();
         });
 
@@ -143,6 +179,9 @@ class ProductsController extends Controller
         $form->editor('description', '商品详情')->rules('required');
         $form->image('image', '图片')->rules('required|image');
         $form->radio('on_sale', '上架')->options(['1' => '是', '0'=> '否'])->default('0');
+        $form->radio('edible', '食品酒水')->options(['1' => '是', '0'=> '否'])->default('0');
+        $form->radio('daily_use', '生活用品')->options(['1' => '是', '0'=> '否'])->default('0');
+        $form->radio('wash_rinse', '美妆个护')->options(['1' => '是', '0'=> '否'])->default('0');
         $form->hasMany('skus', 'SKU 列表', function (Form\NestedForm $form) {
             $form->text('title', 'SKU 名称')->rules('required');
             $form->text('description', 'SKU 描述')->rules('required');
