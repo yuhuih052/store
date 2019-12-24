@@ -34,6 +34,7 @@
                     <div class="row products-list">
                         @foreach($products as $product)
                             <div class="col-xs-3 product-item">
+                                <a style="text-decoration: none;" target="_Blank" href="{{route('products.details',['product'=>$product->id])}}">
                                 <div class="product-content">
                                     <div class="top">
                                         <div class="img"><img src="{{ $product->image_url }}" alt=""></div>
@@ -45,6 +46,7 @@
                                         <div class="review_count">评价 <span>{{ $product->review_count }}</span></div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>

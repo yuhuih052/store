@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Exceptions\RequestException;
 
 class ProductsController extends Controller
 {
@@ -148,5 +149,15 @@ class ProductsController extends Controller
 
         $products = $lookup->paginate(8);
         return view('products.wash_rinse', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
+    }
+
+    public function details(Request $request, Product $product){
+
+        //判断商品是否上架
+        if(!$product || !$product->on_sale){
+            throw new RequestException('商品未上架');
+        }
+
+        return view('products.details',['product'=>$product]);
     }
 }
