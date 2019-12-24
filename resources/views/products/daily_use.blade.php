@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('title', '商品列表')
+@section('title', '生活用品')
 
 @section('content')
     <nav class="col-lg-10 col-lg-offset-1">
         <ul class="nav nav-tabs col-lg-10 col-lg-offset-1" style="margin: 10px">
-            <li role="presentation" class="active"><a href="{{route('products.index')}}">首页</a></li>
+            <li role="presentation"><a href="{{route('products.index')}}">首页</a></li>
             <li role="presentation"><a href="{{route('products.edible')}}">食品酒水</a></li>
-            <li role="presentation"><a href="{{route('products.daily_use')}}">生活用品</a></li>
+            <li role="presentation" class="active"><a href="#">生活用品</a></li>
             <li role="presentation"><a href="{{route('products.wash_rinse')}}">美妆个护</a></li>
         </ul>
         <!-- 筛选组件开始 -->
         <div class="row">
-            <form action="{{ route('products.index') }}" class="form-inline search-form">
+            <form action="{{ route('products.daily_use') }}" class="form-inline search-form">
                 <input type="text" class="form-control input-sm" name="search" placeholder="搜索">
                 <button class="btn btn-primary btn-sm">搜索</button>
                 <select name="order" class="form-control input-sm pull-right">
@@ -60,7 +60,7 @@
         var filters = {!! json_encode($filters) !!};
         $(document).ready(function () {
             $('.search-form input[name=search]').val(filters.search);
-                //监听下拉事件
+            //监听下拉事件
             $('.search-form select[name=order]').on('change', function() {
                 $('.search-form').submit();
             });

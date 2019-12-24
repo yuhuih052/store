@@ -14,6 +14,9 @@
 
 Route::redirect('/', '/products')->name('root');
 Route::get('products', 'ProductsController@index')->name('products.index');
+Route::get('products/edible', 'ProductsController@edible')->name('products.edible');
+Route::get('products/daily_use', 'ProductsController@daily_use')->name('products.daily_use');
+Route::get('products/wash_rinse', 'ProductsController@wash_rinse')->name('products.wash_rinse');
 
 Auth::routes();
 
