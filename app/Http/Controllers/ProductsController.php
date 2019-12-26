@@ -174,12 +174,12 @@ class ProductsController extends Controller
 
         if($user->favoriteProducts()->find($product->id)){
 
-            return [];
+            return;
 
         }
         $user->favoriteProducts()->attach($product->id);
 
-        return [];
+        return;
     }
 
     public function disfavor(Request $request, Product $product){
@@ -188,7 +188,14 @@ class ProductsController extends Controller
 
         $user->favoriteProducts()->detach($product->id);
 
-        return [];
+        return;
+    }
+
+    public function favorites(Request $request){
+
+        $products = $request->user()->favoriteProducts()->paginate(16);
+
+        return view('products.favorites',['products'=>$products]);
     }
 
 }
