@@ -176,7 +176,7 @@ class ProductsController extends Controller
         $form = new Form(new Product);
 
         $form->text('title', '商品名称')->rules('required');
-        $form->editor('description', '商品详情')->rules('required');
+        $form->textarea('description', '商品详情')->rules('required');
         $form->image('image', '图片')->rules('required|image');
         $form->radio('on_sale', '上架')->options(['1' => '是', '0'=> '否'])->default('0');
         $form->radio('edible', '食品酒水')->options(['1' => '是', '0'=> '否'])->default('0');

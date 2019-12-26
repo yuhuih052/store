@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Exceptions\RequestException;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ProductsController extends Controller
 {
@@ -151,13 +152,43 @@ class ProductsController extends Controller
         return view('products.wash_rinse', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
     }
 
-    public function details(Request $request, Product $product){
-
+    public function details(Request $request, Product $product)
+    {
         //判断商品是否上架
-        if(!$product || !$product->on_sale){
+        if(!$product->on_sale){
             throw new RequestException('商品未上架');
         }
 
-        return view('products.details',['product'=>$product]);
+        $favored = false;
+
+        if($user = $request->user()){
+            $favored = boolval($user->favoriteProducts()->find($product->id));
+        }
+
+        return view('products.details',['product'=>$product,'favored'=>$favored]);
     }
+
+    public function favor(Request $request, Product $product){
+
+        $user = $request->user();
+
+        if($user->favoriteProducts()->find($product->id)){
+
+            return [];
+
+        }
+        $user->favoriteProducts()->attach($product->id);
+
+        return [];
+    }
+
+    public function disfavor(Request $request, Product $product){
+
+        $user = $request->user();
+
+        $user->favoriteProducts()->detach($product->id);
+
+        return [];
+    }
+
 }
