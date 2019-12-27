@@ -42,4 +42,9 @@ class User extends Authenticatable
             ->withTimestamps()  //带有时间戳
             ->orderBy('user_favorite_products.created_at', 'desc');//默认按照时间 倒序排序
     }
+
+    public function cartItems(){
+
+        return $this->hasMany(CartItem::class);
+    }
 }

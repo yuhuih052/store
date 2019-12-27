@@ -198,4 +198,5 @@ class ProductsController extends Controller
         return view('products.favorites',['products'=>$products]);
     }
 
+
 }
