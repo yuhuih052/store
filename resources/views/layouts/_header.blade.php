@@ -29,6 +29,9 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ route('cart.show') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
                                 <a href="{{ route('products.favorites') }}">我的收藏</a>
                             </li>
                             <li>
