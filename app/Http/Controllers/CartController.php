@@ -15,22 +15,31 @@ class CartController extends Controller
         $skuId  = $request->input('sku_id');
         $amount = $request->input('amount');
 
-        // 从数据库中查询该商品是否已经在购物车中
-        if ($cart = $user->cartItems()->where('product_sku_id', $skuId)->first()) {
+        // 判断是否登陆
+        if(!$user) {
 
-            // 如果存在则直接叠加商品数量
-            $cart->update([
-                'amount' => $cart->amount + $amount,
-            ]);
+            // 如果未登录，将数据存储 session 中
+            $request->session()->push('sku_id',$skuId.'-'.$amount);
+
         } else {
 
-            // 否则创建一个新的购物车记录
-            $cart = new CartItem(['amount' => $amount]);
-            $cart->user()->associate($user);
-            $cart->productSku()->associate($skuId);
-            $cart->save();
-        }
+            // 从数据库中查询该商品是否已经在购物车中
+            if ($cart = $user->cartItems()->where('product_sku_id', $skuId)->first()) {
 
+                // 如果存在则直接叠加商品数量
+                $cart->update([
+                    'amount' => $cart->amount + $amount,
+                ]);
+            } else {
+
+                // 否则创建一个新的购物车记录
+                $cart = new CartItem(['amount' => $amount]);
+                $cart->user()->associate($user);
+                $cart->productSku()->associate($skuId);
+                $cart->save();
+            }
+
+        }
         return;
     }
 

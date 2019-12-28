@@ -17,7 +17,7 @@ Route::get('products', 'ProductsController@index')->name('products.index');
 Route::get('products/edible', 'ProductsController@edible')->name('products.edible');
 Route::get('products/daily_use', 'ProductsController@daily_use')->name('products.daily_use');
 Route::get('products/wash_rinse', 'ProductsController@wash_rinse')->name('products.wash_rinse');
-
+Route::post('cart', 'CartController@addToCart')->name('cart.addToCart');
 
 Auth::routes();
 
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function (){
         Route::post('products/{product}/favorite','ProductsController@favor')->name('products.favor');
         Route::delete('products/{product}/favorite','ProductsController@disfavor')->name('products.disfavor');
         Route::get('products/favorites','ProductsController@favorites')->name('products.favorites');
-        Route::post('cart', 'CartController@addToCart')->name('cart.addToCart');
+
         Route::get('cart/show','CartController@show')->name('cart.show');
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
     });
