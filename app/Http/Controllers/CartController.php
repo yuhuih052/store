@@ -46,8 +46,9 @@ class CartController extends Controller
     public function show(Request $request)
     {
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+        $addresses = $request->user()->addresses()->orderby('last_used_at','desc')->get();
 
-        return view('cart.show', ['cartItems' => $cartItems]);
+        return view('cart.show', ['cartItems' => $cartItems,'addresses'=> $addresses]);
     }
 
     public function remove(ProductSku $sku, Request $request)
