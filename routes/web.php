@@ -18,6 +18,13 @@ Route::get('products/edible', 'ProductsController@edible')->name('products.edibl
 Route::get('products/daily_use', 'ProductsController@daily_use')->name('products.daily_use');
 Route::get('products/wash_rinse', 'ProductsController@wash_rinse')->name('products.wash_rinse');
 Route::post('cart', 'CartController@addToCart')->name('cart.addToCart');
+Route::get('alipay', function() {
+    return app('alipay')->web([
+        'out_trade_no' => time(),
+        'total_amount' => '1',
+        'subject' => 'test subject - 测试',
+    ]);
+});
 
 Auth::routes();
 
