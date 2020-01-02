@@ -18,13 +18,6 @@ Route::get('products/edible', 'ProductsController@edible')->name('products.edibl
 Route::get('products/daily_use', 'ProductsController@daily_use')->name('products.daily_use');
 Route::get('products/wash_rinse', 'ProductsController@wash_rinse')->name('products.wash_rinse');
 Route::post('cart', 'CartController@addToCart')->name('cart.addToCart');
-Route::get('alipay', function() {
-    return app('alipay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
-});
 
 Auth::routes();
 
@@ -49,8 +42,11 @@ Route::middleware('auth')->group(function (){
         Route::post('orders', 'OrdersController@store')->name('orders.store');
         Route::get('orders', 'OrdersController@index')->name('orders.index');
         Route::get('orders/{order}','OrdersController@details')->name('orders.details');
+        Route::get('payment/{order}/alipay', 'PaymentController@byAlipay')->name('payment.alipay');
+        Route::get('payment/alipay/return','PaymentController@alipayPageCallback')->name('payment.alipay.pageCallback');
     });
 
 });
 
 Route::get('products/{product}', 'ProductsController@details')->name('products.details');
+Route::post('payment/alipay/notify','PaymentController@alipayServerCallback')->name('payment.alipay.serverCallback');
