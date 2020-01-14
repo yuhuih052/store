@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function (){
         Route::get('orders/{order}','OrdersController@details')->name('orders.details');
         Route::get('payment/{order}/alipay', 'PaymentController@byAlipay')->name('payment.alipay');
         Route::get('payment/alipay/return','PaymentController@alipayPageCallback')->name('payment.alipay.pageCallback');
+        Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
     });
 
 });
