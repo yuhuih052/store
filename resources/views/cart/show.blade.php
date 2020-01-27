@@ -182,6 +182,8 @@
                             });
                             html += '</div>';
                             swal({content: $(html)[0], icon: 'error'})
+                        }else if (error.response.status === 403) { // 这里判断状态 403,下单前检查是否符合使用
+                            swal(error.response.data.msg, '', 'error');
                         } else {
                             // 其他情况应该是系统挂了
                             swal('系统错误', '', 'error');
