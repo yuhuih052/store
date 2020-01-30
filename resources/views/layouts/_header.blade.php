@@ -23,13 +23,13 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                <img src="/storage/app/public/玛丽莲梦露.jpg" class="img-responsive img-circle" width="30px" height="30px">
+                                <img src="{{Auth::user()->avatar}}" class="img-responsive img-circle" width="30px" height="30px">
                             </span>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ route('cart.show') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                                <a href="{{ route('cart.show') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 购物车</a>
                             </li>
                             <li>
                                 <a href="{{ route('products.favorites') }}">我的收藏</a>
@@ -39,6 +39,12 @@
                             </li>
                             <li>
                                 <a href="{{ route('user_addresses.index') }}">收货地址</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users.show',Auth::id()) }}">个人资料</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users.edit',Auth::id()) }}">编辑资料</a>
                             </li>
 
                             <li>

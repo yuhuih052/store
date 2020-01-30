@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/email_verified/verify','EmailVerificationController@verify')->name('email_verified.verify');
     /*已经通过邮箱验证*/
     Route::middleware(['auth','email_verified'])->group(function(){
+        Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
         Route::get('user_addresses','UserAddressController@index')->name('user_addresses.index');
         Route::get('user_addresses/create','UserAddressController@create')->name('user_addresses.create');
         Route::post('user_addresses/store','UserAddressController@store')->name('user_addresses.store');
@@ -54,3 +55,7 @@ Route::middleware('auth')->group(function (){
 
 Route::get('products/{product}', 'ProductsController@details')->name('products.details');
 Route::post('payment/alipay/notify','PaymentController@alipayServerCallback')->name('payment.alipay.serverCallback');
+// 登录界面的展示
+Route::get('auth/{service}', 'Auth\SocialiteLoginController@redirectToProvider')->name('socialite_login_form');
+// 登录回调的处理
+Route::get('auth/{service}/callback', 'Auth\SocialiteLoginController@handleProviderCallback')->name('socialite_login');
