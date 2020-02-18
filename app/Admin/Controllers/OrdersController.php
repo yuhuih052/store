@@ -142,10 +142,6 @@ class OrdersController extends Controller
     {
         // 判断该订单的支付方式
         switch ($order->payment_method) {
-            case 'wechat':
-                // 微信的先留空
-                // todo
-                break;
             case 'alipay':
                 // 用我们刚刚写的方法来生成一个退款订单号
                 $refundNo = Order::getAvailableRefundNo();

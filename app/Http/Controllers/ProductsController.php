@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Exceptions\RequestException;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Boolean;
 use App\Models\OrderItem;
 

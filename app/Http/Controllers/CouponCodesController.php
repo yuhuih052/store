@@ -6,6 +6,7 @@ use App\Models\CouponCode;
 use Carbon\Carbon;
 use App\Exceptions\CouponCodeUnavailableException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CouponCodesController extends Controller
 {
@@ -20,5 +21,11 @@ class CouponCodesController extends Controller
         $record->checkAvailable($request->user());
 
         return $record;
+    }
+
+    public function index(){
+        $coupon_codes = DB::table('coupon_codes')->get()->where('enabled', 1);
+
+        return view('coupon_codes',['coupon_codes'=>$coupon_codes,]);
     }
 }

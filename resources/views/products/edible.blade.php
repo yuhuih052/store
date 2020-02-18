@@ -8,6 +8,7 @@
             <li role="presentation" class="active"><a href="#">食品酒水</a></li>
             <li role="presentation"><a href="{{route('products.daily_use')}}">生活用品</a></li>
             <li role="presentation"><a href="{{route('products.wash_rinse')}}">美妆个护</a></li>
+            <li role="presentation"><a href="{{route('coupon_codes.index')}}">领券</a></li>
         </ul>
         <!-- 筛选组件开始 -->
         <div class="row">

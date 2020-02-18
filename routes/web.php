@@ -18,6 +18,7 @@ Route::get('products/edible', 'ProductsController@edible')->name('products.edibl
 Route::get('products/daily_use', 'ProductsController@daily_use')->name('products.daily_use');
 Route::get('products/wash_rinse', 'ProductsController@wash_rinse')->name('products.wash_rinse');
 Route::post('cart', 'CartController@addToCart')->name('cart.addToCart');
+Route::get('coupon_codes','CouponCodesController@index')->name('coupon_codes.index');
 
 Auth::routes();
 

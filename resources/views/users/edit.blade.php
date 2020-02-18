@@ -29,13 +29,13 @@
                         </div>
                         <div class="form-group">
                             <label for="name-field">邮箱</label>
-                            <input class="form-control"  type="text" name="name" id="name-field" readonly="readonly" value="{{ old('name', $user->email) }}" />（注册于：{{ $user->created_at->diffForHumans() }}）
+                            <input class="form-control"  type="text" name="name" id="name-field" readonly="readonly" value="{{ old('name', $user->email) }}（注册于：{{ $user->created_at->diffForHumans() }}）" />
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="" class="avatar-label">用户头像</label>
                             <input type="file" name="avatar" class="form-control-file">
-
+                            <h4>当前头像:</h4>
                             @if($user->avatar)
                                 <br>
                                 <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
     'CloseOrderDelay'=>1800,
 
     /*
@@ -231,5 +231,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
+    'ngrok_url' => env('NGROK_URL'),
 
 ];

@@ -7,6 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <!--<img src="/public/logo.png" class="navbar-brand" width="50px" height="50px">-->
             <a class="navbar-brand" href="{{ url('/') }}">
                 北部湾大学网上商城
             </a>
