@@ -30,8 +30,10 @@ class EventServiceProvider extends ServiceProvider
         OrderReviewd::class => [
             UpdateProductRating::class,
         ],
+
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
+            'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
         ],
 
     ];

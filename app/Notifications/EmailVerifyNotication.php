@@ -29,7 +29,10 @@ class EmailVerifyNotication extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->greeting($notifiable->name.'您好:')
                     ->line('注册成功，请点击链接验证邮箱')
-                    ->action('点击验证', route('email_verified.verify',['$email'=>$notifiable->email,'$token'=>$token]))
+                    ->action('点击验证',
+                        route('email_verified.verify',
+                            ['$email'=>$notifiable->email,'$token'=>$token])
+                    )
                     ->line('欢迎使用BBGU网上商城!');
     }
 

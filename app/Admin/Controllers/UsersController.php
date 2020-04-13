@@ -44,15 +44,11 @@ class UsersController extends Controller
             return $value? '是':'否';
         });
         $grid->created_at('注册时间');
-
         // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户
         $grid->disableCreateButton();
-
         // 关闭编辑 查看 删除按钮
         $grid->disableActions();
-
         $grid->tools(function ($tools) {
-
             // 禁用批量删除按钮
             $tools->batch(function ($batch) {
                 $batch->disableDelete();

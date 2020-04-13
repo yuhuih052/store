@@ -57,6 +57,12 @@ Route::middleware('auth')->group(function (){
 Route::get('products/{product}', 'ProductsController@details')->name('products.details');
 Route::post('payment/alipay/notify','PaymentController@alipayServerCallback')->name('payment.alipay.serverCallback');
 // 登录界面的展示
-Route::get('auth/{service}', 'Auth\SocialiteLoginController@redirectToProvider')->name('socialite_login_form');
+Route::get('/products/auth/{service}', 'Auth\SocialiteLoginController@redirectToProvider')->name('socialite_login_form');
 // 登录回调的处理
-Route::get('auth/{service}/callback', 'Auth\SocialiteLoginController@handleProviderCallback')->name('socialite_login');
+Route::get('/products/auth/{service}/callback', 'Auth\SocialiteLoginController@handleProviderCallback')->name('socialite_login');
+
+//微博登录
+Route::get( '/auth/{social}', 'AuthorizationsController@getSocialRedirect' )
+    ->middleware('guest')->name('weibo_login_from');
+Route::get( '/auth/{social}/callback', 'AuthorizationsController@getSocialCallback' )
+    ->middleware('guest')->name('weibo_login_');

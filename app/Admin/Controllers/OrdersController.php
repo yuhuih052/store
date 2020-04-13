@@ -16,11 +16,7 @@ use App\Exceptions\InsideException;
 class OrdersController extends Controller
 {
     use HasResourceActions;
-    /**
-     * Title for current resource.
-     *
-     * @var string
-     */
+
     protected $title = 'App\Models\Order';
 
     public function index(Content $content)
@@ -30,11 +26,6 @@ class OrdersController extends Controller
             ->body($this->grid());
     }
 
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
     protected function grid()
     {
         $grid = new Grid(new Order);

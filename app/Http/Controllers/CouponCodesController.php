@@ -16,7 +16,6 @@ class CouponCodesController extends Controller
         if (!$record = CouponCode::where('code', $code)->first()) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
-
         //优惠券存在就调用优惠券模型类里面的检查方法进行验证
         $record->checkAvailable($request->user());
 

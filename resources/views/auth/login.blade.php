@@ -58,6 +58,7 @@
                                         忘记密码?
                                     </a>
                                     <a class="btn btn-link" href="{{route('socialite_login_form','qq')}}"><i class="fa fa-qq"></i> qq登录</a>
+                                    <a class="btn btn-link" href="{{route('weibo_login_from','weibo')}}"><i class="fa fa-qq"></i> 微博登录</a>
                                 </div>
                             </div>
                         </form>

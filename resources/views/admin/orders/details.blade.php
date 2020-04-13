@@ -11,8 +11,8 @@
         <table class="table table-bordered">
             <tbody>
             <tr>
-                <td>买家：</td>
-                <td>{{ $order->user->name }}</td>
+                <td>收货人：</td>
+                <td>{{ $order->address['contact_name'] }}</td>
                 <td>支付时间：</td>
                 <td>{{ $order->paid_at->format('Y-m-d H:i:s') }}</td>
             </tr>
@@ -23,8 +23,9 @@
                 <td>{{ $order->payment_no }}</td>
             </tr>
             <tr>
-                <td>收货地址</td>
-                <td colspan="3">{{ $order->address['address'] }} {{ $order->address['zip'] }} {{ $order->address['contact_name'] }} {{ $order->address['contact_phone'] }}</td>
+                <td>收货信息</td>
+                <td colspan="2">{{ $order->address['address'] }} {{ $order->address['contact_phone'] }} </td>
+                <td>邮编： {{ $order->address['zip'] }}</td>
             </tr>
             <tr>
                 <td rowspan="{{ $order->items->count() + 1 }}">商品列表</td>
