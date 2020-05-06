@@ -2,8 +2,8 @@
 @section('title', '生活用品')
 
 @section('content')
-    <nav class="col-lg-10 col-lg-offset-1">
-        <ul class="nav nav-tabs col-lg-10 col-lg-offset-1" style="margin: 10px">
+    <nav class="col-lg-12">
+        <ul class="nav nav-tabs col-lg-12" style="margin: 10px">
             <li role="presentation"><a href="{{route('products.index')}}">首页</a></li>
             <li role="presentation"><a href="{{route('products.edible')}}">食品酒水</a></li>
             <li role="presentation" class="active"><a href="#">生活用品</a></li>
@@ -29,16 +29,16 @@
         <!-- 筛选组件结束 -->
     </nav>
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row products-list">
                         @foreach($products as $product)
-                            <div class="col-xs-3 product-item">
+                            <div class="col-xs-2 product-item">
                                 <a style="text-decoration: none;" target="_Blank" href="{{route('products.details',['product'=>$product->id])}}">
                                 <div class="product-content">
                                     <div class="top">
-                                        <div class="img"><img src="{{ $product->image_url }}" alt=""></div>
+                                        <div class="img" style="height: 163px;"><img src="{{ $product->image_url }}" alt="" style="height: auto;"></div>
                                         <div class="price"><b>￥</b>{{ $product->price }}</div>
                                         <div class="title">{{ $product->title }}</div>
                                     </div>

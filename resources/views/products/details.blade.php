@@ -4,12 +4,18 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-12 ">
             <div class="panel panel-default">
                 <div class="panel-body product-info">
                     <div class="row">
                         <div class="col-sm-5">
-                            <img class="cover" src="{{ $product->image_url }}" alt="">
+                            <div class="box" style="position:relative;width: 400px;height: 400px;overflow: hidden;">
+                                <img class="cover" src="{{ $product->image_url }}" alt="" style="width: 400px;height: 400px;">
+                                <div class="shubiao" style="width: 100px;height: 100px;background:red;opacity: 0.5;position:absolute;top: 0;left: 0;z-index:99;display: none;">
+
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-sm-7">
                             <div class="title">{{ $product->title }}</div>
@@ -43,6 +49,12 @@
                                 @endif
                                 <button class="btn btn-primary btn-add-to-cart">加入购物车</button>
                             </div>
+                            <br><br><br><br><br>
+                            <div class="col-sm-12" ><span>欢迎登陆北部湾大学网上商城，本店质量保证，放心购买</span></div>
+                        </div>
+
+                        <div class="Show" style="width: 400px;height: 400px;position:absolute;left: 450px; overflow: hidden;z-index:99;display: none;">
+                            <img src="{{ $product->image_url }}" alt="" style="width: 1600px;height: 1600px;">
                         </div>
                     </div>
                     <div class="product-detail">
@@ -178,7 +190,32 @@
                     })
             });
 
-
         });
+
+        var box = document.getElementsByClassName('box')[0];
+        var show = document.getElementsByClassName('Show')[0];
+        var shubiao = document.getElementsByClassName('shubiao')[0];
+
+        box.onmousemove = function(event){
+            show.style.display = 'block';
+            shubiao.style.display = 'block';
+
+            var moveX = event.clientX - box.offsetLeft;
+            var moveY = event.clientY - box.offsetTop;
+
+            var left=Math.min(Math.max(moveX-100,0),300);
+            var top=Math.min(Math.max(moveY-100,0),300);
+
+            shubiao.style.left = left +'px';
+            shubiao.style.top = top +'px';
+
+            show.scrollLeft = left*4;
+            show.scrollTop = top*4;
+        }
+
+        box.onmouseout = function(event){
+            shubiao.style.display = 'none';
+            show.style.display = 'none';
+        }
     </script>
 @endsection

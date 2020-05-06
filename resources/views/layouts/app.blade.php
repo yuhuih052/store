@@ -14,7 +14,7 @@
 <body>
 <div id="app" class="{{ route_class() }}-page">
     @include('layouts._header')
-    <div class="container">
+    <div class="container" style="position: relative">
         @yield('content')
     </div>
     @include('layouts._footer')

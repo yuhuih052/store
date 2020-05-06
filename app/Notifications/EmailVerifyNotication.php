@@ -36,7 +36,6 @@ class EmailVerifyNotication extends Notification implements ShouldQueue
                     ->line('欢迎使用BBGU网上商城!');
     }
 
-
     public function toArray($notifiable)
     {
         return [

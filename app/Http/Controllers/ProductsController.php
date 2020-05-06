@@ -42,13 +42,12 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $lookup->paginate(8);
+        $products = $lookup->paginate(18);
         return view('products.index', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
     }
 
     public function edible(Request $request){
 
-        //创建一个查询构造器 $lookup;
         $lookup = Product::query()->where('on_sale', true)
                                 ->where('edible',true);
 
@@ -78,17 +77,15 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $lookup->paginate(8);
+        $products = $lookup->paginate(12);
         return view('products.edible', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
     }
 
     public function daily_use(Request $request)
     {
-        //创建一个查询构造器 $lookup;
         $lookup = Product::query()->where('on_sale', true)
                                 ->where('daily_use',true);
 
-        //判断搜索框是否有搜索
         if($search = $request->input('search','')){
             $like = '%'.$search.'%';
 
@@ -114,13 +111,12 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $lookup->paginate(8);
+        $products = $lookup->paginate(12);
         return view('products.daily_use', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
     }
 
     public function wash_rinse(Request $request)
     {
-        //创建一个查询构造器 $lookup;
         $lookup = Product::query()->where('on_sale', true)
             ->where('wash_rinse',true);
 
@@ -150,7 +146,7 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $lookup->paginate(8);
+        $products = $lookup->paginate(12);
         return view('products.wash_rinse', ['products' => $products, 'filters'  => ['search' => $search, 'order'  => $order,],]);
     }
 

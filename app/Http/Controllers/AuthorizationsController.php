@@ -31,7 +31,6 @@ class AuthorizationsController extends Controller
             $newUser = new User();
 
             $newUser->name = $socialUser->getName() == '' ? $socialUser->getNickname():$socialUser->getName();
-
             $newUser->email = $socialUser->getEmail() == '' ? '' : $socialUser->getEmail();
             $newUser->avatar = $socialUser->getAvatar();
             $newUser->password = '';

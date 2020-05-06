@@ -3,18 +3,18 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">我的收藏</div>
                 <div class="panel-body">
                     <div class="row products-list">
                         @foreach($products as $product)
-                            <div class="col-xs-3 product-item">
+                            <div class="col-xs-2 product-item">
                                 <div class="product-content">
                                     <div class="top">
-                                        <div class="img">
+                                        <div class="img" style="height: 163px;">
                                             <a href="{{ route('products.details', ['product' => $product->id]) }}">
-                                                <img src="{{ $product->image_url }}" alt="">
+                                                <img src="{{ $product->image_url }}" alt="" style="height:auto;">
                                             </a>
                                         </div>
                                         <div class="price"><b>￥</b>{{ $product->price }}</div>

@@ -192,9 +192,7 @@
             });
             // 检查按钮点击事件
             $('#btn-check-coupon').click(function () {
-                // 获取用户输入的优惠码
                 var code = $('input[name=coupon_code]').val();
-                // 如果没有输入则弹框提示
                 if(!code) {
                     swal('请输入优惠码', '', 'warning');
                     return;
